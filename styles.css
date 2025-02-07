@@ -1,10 +1,29 @@
+/* Define theme variables */
+:root {
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --input-background: #1e1e1e;
+    --input-border: #333333;
+    --button-background: #007bff;
+    --button-hover: #0056b3;
+}
+
+.light-theme {
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --input-background: #f9f9f9;
+    --input-border: #cccccc;
+    --button-background: #007bff;
+    --button-hover: #0056b3;
+}
+
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 /* Container */
@@ -12,15 +31,33 @@ body {
     max-width: 600px;
     margin: 50px auto;
     padding: 20px;
-    background: #fff;
+    background: var(--input-background);
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Heading */
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 h1 {
-    text-align: center;
-    color: #444;
+    margin: 0;
+}
+
+.theme-toggle {
+    background-color: var(--button-background);
+    color: var(--text-color);
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.theme-toggle:hover {
+    background-color: var(--button-hover);
 }
 
 /* Form Group */
@@ -33,7 +70,8 @@ input[type="text"] {
     padding: 10px;
     font-size: 16px;
     border-radius: 4px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--input-border);
+    background-color: var(--input-background);
 }
 
 .error {
@@ -47,15 +85,14 @@ button {
     width: 100%;
     padding: 10px;
     font-size: 16px;
-    background-color: #007bff;
+    background-color: var(--button-background);
     color: white;
     border: none;
     border-radius: 4px;
-    cursor: pointer;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: var(--button-hover);
 }
 
 /* Textarea */
@@ -65,5 +102,4 @@ textarea {
     padding: 10px;
     font-size: 16px;
     border-radius: 4px;
-    border: 1px solid #ccc;
 }

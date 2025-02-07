@@ -1,8 +1,11 @@
+// Function to validate YouTube URLs
 function validateYouTubeUrl(url) {
     const regex = /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})$/;
 
     return regex.test(url);
 }
+
+// Function to summarize video
 async function summarizeVideo() {
     const youtubeUrl = document.getElementById("youtubeUrl").value.trim();
     const summaryOutput = document.getElementById("summaryOutput");
@@ -37,9 +40,26 @@ async function summarizeVideo() {
         // Clear error message if successful
         errorMessage.textContent = "";
         
-    } catch (error) {
-        summaryOutput.value = `Error fetching summary. Please try again later.`;
-        console.error(error);
-        errorMessage.textContent = error.message; // Optional debug message
+   } catch (error) {
+       summaryOutput.value = `Error fetching summary. Please try again later.`;
+       console.error(error);
+       errorMessage.textContent = error.message; // Optional debug message
    }
 }
+
+// Theme toggle functionality
+const themeToggleButton = document.getElementById("themeToggle");
+
+themeToggleButton.addEventListener("click", () => {
+   const body = document.body;
+
+   // Toggle light-theme class on body
+   body.classList.toggle("light-theme");
+
+   // Update button text based on current theme
+   if (body.classList.contains("light-theme")) {
+       themeToggleButton.textContent = "Switch to Dark Theme";
+   } else {
+       themeToggleButton.textContent = "Switch to Light Theme";
+   }
+});
