@@ -3,59 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube Summarizer</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        input, button {
-            margin: 10px 0;
-            padding: 10px;
-            width: 100%;
-        }
-        textarea {
-            width: 100%;
-            height: 150px;
-            margin-top: 10px;
-        }
-    </style>
+    <title>YouTube Video Summarizer</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>YouTube Video Summarizer</h1>
-    <input type="text" id="youtubeUrl" placeholder="Enter YouTube URL" />
-    <button onclick="summarizeVideo()">Summarize</button>
-    <textarea id="summaryOutput" readonly placeholder="Summary will appear here..."></textarea>
-
-    <script>
-        async function summarizeVideo() {
-            const youtubeUrl = document.getElementById("youtubeUrl").value;
-            const summaryOutput = document.getElementById("summaryOutput");
-
-            if (!youtubeUrl) {
-                summaryOutput.value = "Please enter a valid YouTube URL.";
-                return;
-            }
-
-            summaryOutput.value = "Processing...";
-
-            try {
-                const response = await fetch("https://your-backend-url.up.railway.app/summarize", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ url: youtubeUrl })
-                });
-
-                if (!response.ok) {
-                    throw new Error("Failed to fetch summary.");
-                }
-
-                const data = await response.json();
-                summaryOutput.value = data.summary || "No summary available.";
-            } catch (error) {
-                summaryOutput.value = `Error: ${error.message}`;
-            }
-        }
-    </script>
+    <div class="container">
+        <h1>YouTube Video Summarizer</h1>
+        <p>Enter a valid YouTube URL to get a summary of the video.</p>
+        <div class="form-group">
+            <input type="text" id="youtubeUrl" placeholder="Enter YouTube URL" />
+            <span id="error-message" class="error"></span>
+        </div>
+        <button onclick="summarizeVideo()">Summarize</button>
+        <textarea id="summaryOutput" readonly placeholder="Summary will appear here..."></textarea>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
