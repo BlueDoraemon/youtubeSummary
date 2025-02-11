@@ -24,7 +24,7 @@ async function summarizeVideo() {
     summaryOutput.value = "Processing...";
 
     try {
-        const response = await fetch("https://your-backend-url.up.railway.app/summarize", {
+        const response = await fetch("https://fastapi-production-dd6e.up.railway.app/summarize", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ url: youtubeUrl })
